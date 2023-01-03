@@ -8,14 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var counter = 0
+    @State private var showAlert = false
+    
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack{
+            VStack{
+                Text("dfd")
+                    .navigationTitle("Tap Counter")
+            }.navigationBarTitleDisplayMode(.inline)
+            // Adding nav buttons
+                .navigationBarItems(leading: HStack {
+                    Button("Reset") {
+                        
+                    }
+                    // Putting button to right
+                }, trailing: HStack {
+                    Button("Settings") {
+                        showAlert = true
+                    }.alert("Player Settings", isPresented: $showAlert){
+                        Button("Cancel", role: .cancel) {}
+                    }
+                })
         }
-        .padding()
+                 
     }
 }
 
